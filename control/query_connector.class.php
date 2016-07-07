@@ -45,9 +45,10 @@ require_once('config.php');
 
 			if($type == 'read') {
 
+				$columns = array_keys($column);
 				$columns = implode(", ",$column);
 
-				$query = ''.$query_type.' '.$columns.' FROM '.$table.'';
+				$query = ''.$query.' '.$columns.' FROM '.$table.'';
 
 				$dbh_query = $dbh->prepare($query);
 
@@ -58,13 +59,14 @@ require_once('config.php');
 
 				return $dbh_querys;
 
+
 			}elseif($type == 'create') {
 
 				$columns = array_keys($column);
 				$col_value = implode(", :",$columns);
 				$col_prepare = implode(", ",$columns);
 
-				$query = ''.$query_type.' '.$table.' ('.$col_prepare.') VALUES (:'.$col_value.')';
+				$query = ''.$query.' '.$table.' ('.$col_prepare.') VALUES (:'.$col_value.')';
 
 				$dbh_query = $dbh->prepare($query);
 
@@ -90,7 +92,7 @@ require_once('config.php');
 
 				}
 
-				$query = ''.$query_type.' '.$table.' SET '.implode(", ",$query_array).' WHERE '.$query_array_id.'';
+				$query = ''.$query.' '.$table.' SET '.implode(", ",$query_array).' WHERE '.$query_array_id.'';
 
 				$dbh_query = $dbh->prepare($query);
 
