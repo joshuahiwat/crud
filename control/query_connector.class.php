@@ -45,7 +45,6 @@ require_once('config.php');
 
 			if($type == 'read') {
 
-				$columns = array_keys($column);
 				$columns = implode(", ",$column);
 
 				$query = ''.$query.' '.$columns.' FROM '.$table.'';
