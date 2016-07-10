@@ -21,9 +21,9 @@ Read: processing('read', '#tabel_name', array('#column_name_one', '#column_name_
 
 Create: processing('create', '#tabel_name', array('#column_name_one' => '#column_record_value'));
 
-Update: processing('create', '#tabel_name', array('#column_name_one' => '#column_record_value', '#column_primary_key' => '#column_primary_key_value'));
+Update: processing('update', '#tabel_name', array('#column_name_one' => '#column_record_value', '#column_primary_key' => '#column_primary_key_value'));
 
-Delete: processing('create', '#tabel_name', array('#column_primary_key' => '#column_primary_key_value'));
+Delete: processing('delete', '#tabel_name', array('#column_primary_key' => '#column_primary_key_value'));
 
 Change the names and delete the # before the example names. This above is an example, don't use for production!
 
