@@ -79,17 +79,17 @@ require_once('config.php');
 				$columns = array_keys($column);
 				$col_set = implode(",",$columns);
 
-				$query_array = array();
+				$query_array = [];
 
-				foreach ($column as $key => $value) {
+				foreach ($column as $key => $value):
 
-					if($key == 'id'){
+					if($key == 'id'):
 						$query_array_id = $key.' = :'.$key;
-					}else{
+					else:
 						$query_array[] = $key.' = :'.$key;
-					}
+					endif;
 
-				}
+				endforeach;
 
 				$query = ''.$query.' '.$table.' SET '.implode(", ",$query_array).' WHERE '.$query_array_id.'';
 
