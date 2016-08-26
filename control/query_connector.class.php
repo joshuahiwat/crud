@@ -43,7 +43,7 @@ require_once('config.php');
 			$query = $this->QueryType($type);
 
 
-			if($type == 'read') {
+			if($type == 'read'):
 
 				$columns = implode(", ",$column);
 
@@ -59,7 +59,7 @@ require_once('config.php');
 				return $dbh_querys;
 
 
-			}elseif($type == 'create') {
+			elseif($type == 'create'):
 
 				$columns = array_keys($column);
 				$col_value = implode(", :",$columns);
@@ -74,7 +74,7 @@ require_once('config.php');
 
 				return $dbh_query;
 
-			}elseif($type == 'update') {
+			elseif($type == 'update'):
 
 				$columns = array_keys($column);
 				$col_set = implode(",",$columns);
@@ -100,7 +100,7 @@ require_once('config.php');
 
 				return $dbh_query;
 
-			}elseif($type == 'delete') {
+			elseif($type == 'delete'):
 
 				$columns = array_keys($column);
 				$col_set = implode(",",$columns);
@@ -113,6 +113,6 @@ require_once('config.php');
 
 
 				return $dbh_query;
-			}
+			endif;
 		}
 	}
