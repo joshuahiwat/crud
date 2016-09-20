@@ -1,11 +1,6 @@
 <?php
 require_once('config.php');
-/**
- * Created by PhpStorm.
- * User: joshuahiwat
- * Date: 20-9-16
- * Time: 14:03
- */
+
 class Connection
 {
     public function getDatabase() {
