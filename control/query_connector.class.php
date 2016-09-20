@@ -1,24 +1,15 @@
 <?php
-require_once('config.php');
 
 	class QueryConnector {
 
-		protected function getDatabase() {
-			global $config;
-			$dbh = NULL;
+    private $connection;
 
-			try {
-				$dbh = new PDO('mysql:host=' . $config['database']['host'] . ';dbname=' . $config['database']['dbname'], $config['database']['username'], $config['database']['password']);
-				$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			} catch(PDOException $e) {
-				die('DATABASE ERROR: ' . $e->getMessage());
-			}
+        public function __construct(Connection $connection)
+        {
+            $this->connection = $connection;
+        }
 
-			return $dbh;
-
-		}	
-
-		protected function QueryType($type)	{
+        protected function QueryType($type)	{
 
 			switch ($type) {
 				case 'create':
@@ -39,7 +30,6 @@ require_once('config.php');
 		}
 
 		public function processing($type, $table, $column = null) {
-			$dbh = $this->getDatabase();
 			$query = $this->QueryType($type);
 
 
@@ -49,7 +39,7 @@ require_once('config.php');
 
 				$query = ''.$query.' '.$columns.' FROM '.$table.'';
 
-				$dbh_query = $dbh->prepare($query);
+				$dbh_query = $this->connection->getDatabase()->prepare($query);
 
 				$dbh_query->execute();
 
@@ -67,7 +57,7 @@ require_once('config.php');
 
 				$query = ''.$query.' '.$table.' ('.$col_prepare.') VALUES (:'.$col_value.')';
 
-				$dbh_query = $dbh->prepare($query);
+				$dbh_query = $this->connection->getDatabase()->prepare($query);
 
 				$dbh_query->execute($column);	
 
@@ -93,7 +83,7 @@ require_once('config.php');
 
 				$query = ''.$query.' '.$table.' SET '.implode(", ",$query_array).' WHERE '.$query_array_id.'';
 
-				$dbh_query = $dbh->prepare($query);
+				$dbh_query = $this->connection->getDatabase()->prepare($query);
 
 				$dbh_query->execute($column);
 
@@ -107,7 +97,7 @@ require_once('config.php');
 
 				$query = ''.$query.' '.$table.' WHERE '.$col_set.'= :'.$col_set.'';
 
-				$dbh_query = $dbh->prepare($query);
+				$dbh_query = $this->connection->getDatabase()->prepare($query);
 
 				$dbh_query->execute($column);
 
