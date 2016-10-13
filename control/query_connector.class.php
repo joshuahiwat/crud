@@ -29,7 +29,8 @@ class QueryConnector {
 		return $query_type;
 	}
 
-	public function processing($type, $table, $column = null) {
+	public function processing($type, $table, $column = null) 
+	{
 		$query = $this->QueryType($type);
 
 
