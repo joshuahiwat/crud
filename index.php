@@ -10,7 +10,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'):
 
 	if(count($errors) == 0):
 
-		$postFile->processing('create', 'test', array('column1' => $_POST['column1'], 'column2' => $_POST['column2']));
+		$postFile->processing('create', 'test', ['column1' => $_POST['column1'], 'column2' => $_POST['column2']]);
 
 		echo 'Het product is succesvol toegevoegd.';
 	else:
