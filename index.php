@@ -8,9 +8,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'):
 
 	// error meldingen 
 
-	if(count($errors) == 0):
+	if(count($errors) === 0):
 
-		$postFile->processing('create', 'test', ['column1' => $_POST['column1'], 'column2' => $_POST['column2']]);
+		$postFile->processing('create', 'test', $_POST);
 
 		echo 'Het product is succesvol toegevoegd.';
 	else:
