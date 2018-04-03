@@ -9,7 +9,7 @@ class QueryConnector {
             $this->connection = $connection;
         }
 
-        protected function QueryType($type)	
+        protected function QueryType(string $type)	
         {
 		switch ($type) {
 			case 'create':
@@ -29,7 +29,7 @@ class QueryConnector {
 		return $query_type;
 	}
 
-	public function processing($type, $table, $column = null) 
+	public function processing(string $type, string $table, array $column = null) 
 	{
 		$query = $this->QueryType($type);
 
